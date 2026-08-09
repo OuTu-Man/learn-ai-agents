@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+
 def load_api_key(key_name="BAILIAN_API_KEY") -> str:
     api_key = os.getenv(key_name)
     if api_key:
@@ -21,6 +22,6 @@ def load_api_key(key_name="BAILIAN_API_KEY") -> str:
                 continue
             key, value = line.split("=", 1)
             if key.strip() == key_name:
-                return value.strip().strip('"\'')
+                return value.strip().strip("\"'")
 
     raise RuntimeError(f"请先设置环境变量 {key_name}，或在项目根目录或其父目录创建 .env 文件")
